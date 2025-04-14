@@ -1,0 +1,57 @@
+/* Style for the "Why us?" section */
+.why-us-section {
+    padding: 50px 0;
+    text-align: center;
+}
+
+.why-us-section h2 {
+    font-size: 2.5em;
+    margin-bottom: 30px;
+    font-weight: bold;
+}
+
+.why-us-section h3 {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.why-us-section p {
+    font-size: 1.2em;
+}
+
+.feature {
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.feature-icon {
+    font-size: 50px;
+    color: #1DB954;
+    margin-bottom: 10px;
+}
+
+.feature h4 {
+    margin-top: 10px;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.feature p {
+    font-size: 1em;
+    color: #6c757d;
+}
+
+.disclaimer {
+    font-size: 0.9em;
+    color: #777;
+    margin-top: 30px;
+}
+
+.gg-calendar,
+.gg-music,
+.gg-layout-list,
+.gg-lock {
+    font-size: 50px;
+    color: #1DB954;
+    margin-bottom: 10px;
+}
