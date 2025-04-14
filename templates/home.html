@@ -4,51 +4,121 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Spotify Top Songs</title>
+
+
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="/static/css/styles.css">
+    <link rel="stylesheet" href="../static/css/home.css">
+    <link rel="stylesheet" href="../static/css/favourite.css">
+
+
+    <!--    Logos -->
+    <link href='https://unpkg.com/css.gg@2.0.0/icons/css/lock.css' rel='stylesheet'>
+    <link href='https://unpkg.com/css.gg@2.0.0/icons/css/layout-list.css' rel='stylesheet'>
+    <link href='https://unpkg.com/css.gg@2.0.0/icons/css/music.css' rel='stylesheet'>
+    <link href='https://unpkg.com/css.gg@2.0.0/icons/css/calendar.css' rel='stylesheet'>
+
 </head>
 <body>
-    <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
-        <div class="carousel-inner">
-
-            <div class="carousel-item active">
-                <img class="d-block w-100" src="/static/img/spotify_slide2.jpeg" alt="First slide">
-                <div class="carousel-caption d-none d-md-block">
-                    <h1>Spotify Top Songs</h1>
-                    <p>Search for your favorite artist above.</p>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <img class="d-block w-100" src="/static/img/slide_theweeknd.jpeg" alt="Second slide">
-                <div class="carousel-caption d-none d-md-block">
-                    <h1>Spotify Top Songs</h1>
-                    <p>Search for your favorite artist above.</p>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <img class="d-block w-100" src="/static/img/spotify_slide.jpg" alt="Third slide">
-                <div class="carousel-caption d-none d-md-block">
-                    <h1>Spotify Top Songs</h1>
-                    <p>Search for your favorite artist above.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <header>
-        <a href="home.html"><img src="../static/img/spotify_logo.png" alt="" id="spotify-logo"></a>
+<header>
+    <div class="header-container">
+        <a href="/" id="home-link">
+            <img src="../static/img/spotify_logo.png" alt="Spotify Logo" id="spotify-logo">
+        </a>
         <form id="search-form" method="POST" action="/">
             <input type="text" id="artist-name" name="artist_name" placeholder="Search for an artist...">
             <button type="submit">Search</button>
         </form>
-    </header>
+        <button id="nav-toggler" aria-label="Toggle navigation">&#9776;</button>
+
+    </div>
+    <nav id="nav-menu">
+        <div class="favorites-dropdown">
+            <button id="favorites-toggler">Favorites</button>
+            <ul id="favorites-list" class="favorites-list"></ul>
+        </div>
+        <a href="/form.html">Contact</a>
+    </nav>
+</header>
 
 
-    <!-- jQuery, Popper.js, and Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="/static/js/script.js"></script>
+<!--    SLAJDY-->
+<div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel" data-bs-interval="3000">
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img class="d-block w-100" src="../static/img/slide_theweeknd.jpeg" alt="First slide">
+            <div class="carousel-caption">
+                <h1>Want to know more about your favorite artist?</h1>
+                <p>Extend your knowledge here</p>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img class="d-block w-100" src="../static/img/slide_billie_eilish.jpeg" alt="Second slide">
+            <div class="carousel-caption">
+                <h1>Feel free to contact us</h1>
+                <p>I'd love to hear a second opinion from you.</p>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img class="d-block w-100" src="../static/img/spotify_logo.png" alt="Third slide">
+            <div class="carousel-caption">
+                <h1>Spotify Top Songs</h1>
+                <p>Search for your favorite artist above.</p>
+            </div>
+        </div>
+    </div>
+</div>
+<!--    KONIEC SLAJDÓW-->
+
+<div class="container why-us-section">
+    <h2>Why us?</h2>
+    <div class="row">
+        <div class="col-md-12">
+            <h3>Easy, extensive and secure</h3>
+        </div>
+        <div class="col-md-3 feature">
+            <i class="gg-lock"></i>
+            <h4>Safe & secure</h4>
+            <p>We prioritize privacy and security. This website is database-free so there's no need to worry about your
+                privacy</p>
+        </div>
+        <div class="col-md-3 feature">
+            <i class="gg-music"></i>
+            <h4>Popularity feature</h4>
+            <p>Thanks to spotify API you can see popularity value which is calculatem from the popularity of all the
+                artist's tracks. </p>
+        </div>
+        <div class="col-md-3 feature">
+            <i class="gg-calendar"></i>
+            <h4>Up to date*</h4>
+            <p>Database is automatically refresh, so you'll always be up-to-date !</p>
+        </div>
+        <div class="col-md-3 feature">
+            <i class="gg-layout-list"></i>
+            <h4>No need to login*</h4>
+            <p>Thanks to OAuth 2.0 authorization code flow in spotify API, there's no need to login in order to use our
+                website </p>
+        </div>
+    </div>
+    <p class="disclaimer">* Import of streaming history may be required to unlock (part of) this feature</p>
+</div>
+
+<div id="quote-container">
+    <blockquote class="quote"></blockquote>
+    <button class="new-quote-btn"> New Quote</button>
+</div>
+
+
+<footer>
+    <p>&copy; 2021 Spotify Top Songs</p>
+</footer>
+
+<!-- jQuery, Popper.js, and Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="/static/js/script.js"></script>
+<script src="/static/js/fetch.js"></script>
 </body>
 </html>

@@ -1,27 +1,5 @@
-
 document.addEventListener("DOMContentLoaded", function() {
-    const loading = document.getElementById('loading');
-    loading.style.display = 'block';
 
-    window.onload = function() {
-        loading.style.display = 'none';
-    };
-
-    const searchForm = document.getElementById('search-form');
-    searchForm.addEventListener('submit', function(event) {
-        event.preventDefault();
-        const artistName = document.getElementById('artist-name').value.trim();
-        if (artistName) {
-            const encodedArtistName = encodeURIComponent(artistName.replace(/ /g, '_'));
-            window.location.href = '/' + encodedArtistName;
-        }
-    });
-});
-
-// Wait for the DOM to be fully loaded
-// Wait for the DOM to be fully loaded
-document.addEventListener("DOMContentLoaded", function() {
-    // Select the header element
     const header = document.querySelector("header");
 
     // Function to handle scroll event
@@ -47,4 +25,116 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 
+document.addEventListener('DOMContentLoaded', function() {
+    var toggler = document.getElementById('nav-toggler');
+    var navMenu = document.getElementById('nav-menu');
 
+    toggler.addEventListener('click', function() {
+        navMenu.classList.toggle('show');
+    });
+});
+
+
+// ADD TO YOUR FAVOURITES
+// CLICK FAVOURITE ARTIST IN HEADER TO DIRECT TO ARTIST PAGE
+//     document.addEventListener('DOMContentLoaded', function() {
+//         // Get references to DOM elements
+//         const addToFavoritesBtn = document.getElementById('add-to-favorites');
+//         const favoritesList = document.getElementById('favorites-list');
+//         const favoritesToggler = document.getElementById('favorites-toggler');
+//
+//         // Load favorites from localStorage
+//         let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+//
+//         // Function to update the favorites list in the DOM
+//         function updateFavoritesList() {
+//             favoritesList.innerHTML = '';
+//             favorites.forEach(artist => {
+//                 const li = document.createElement('li');
+//                 li.textContent = artist;
+//                 li.addEventListener('click', () => {
+//                     window.location.href = `/artist/${encodeURIComponent(artist)}`;
+//                 });
+//                 favoritesList.appendChild(li);
+//             });
+//         }
+//
+//         // Add event listener to the "Add to Favorites" button
+//         if (addToFavoritesBtn) {
+//             addToFavoritesBtn.addEventListener('click', function() {
+//                 const artist = this.getAttribute('data-artist');
+//                 if (!favorites.includes(artist)) {
+//                     favorites.push(artist);
+//                     localStorage.setItem('favorites', JSON.stringify(favorites));
+//                     updateFavoritesList();
+//                 }
+//             });
+//         }
+//
+//         // Toggle the visibility of the favorites list
+//         favoritesToggler.addEventListener('click', function() {
+//             favoritesList.classList.toggle('show');
+//         });
+//
+//         // Initial call to update the favorites list
+//         updateFavoritesList();
+//     });
+
+    // JavaScript to handle adding, displaying, and deleting favorites
+    document.addEventListener('DOMContentLoaded', function() {
+        // Get references to DOM elements
+        const addToFavoritesBtn = document.getElementById('add-to-favorites');
+        const favoritesList = document.getElementById('favorites-list');
+        const favoritesToggler = document.getElementById('favorites-toggler');
+
+        // Load favorites from localStorage
+        let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+
+        // Function to update the favorites list in the DOM
+        function updateFavoritesList() {
+            favoritesList.innerHTML = '';
+            favorites.forEach(artist => {
+                const li = document.createElement('li');
+                li.className = 'favorite-item';
+                li.innerHTML = `
+                    <span class="favorite-artist">${artist}</span>
+                    <button class="delete-btn">Delete</button>
+                `;
+                li.querySelector('.favorite-artist').addEventListener('click', () => {
+                    window.location.href = `/artist/${encodeURIComponent(artist)}`;
+                });
+                li.querySelector('.delete-btn').addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    removeFavorite(artist);
+                });
+                favoritesList.appendChild(li);
+            });
+        }
+
+        // Add event listener to the "Add to Favorites" button
+        if (addToFavoritesBtn) {
+            addToFavoritesBtn.addEventListener('click', function() {
+                const artist = this.getAttribute('data-artist');
+                if (!favorites.includes(artist)) {
+                    favorites.push(artist);
+                    localStorage.setItem('favorites', JSON.stringify(favorites));
+                    updateFavoritesList();
+                }
+            });
+        }
+
+        // Toggle the visibility of the favorites list
+        favoritesToggler.addEventListener('click', function() {
+            favoritesList.classList.toggle('show');
+        });
+
+        // Remove favorite from the list
+        function removeFavorite(artist) {
+            favorites = favorites.filter(fav => fav !== artist);
+            localStorage.setItem('favorites', JSON.stringify(favorites));
+            updateFavoritesList();
+        }
+
+        // Initial call to update the favorites list
+        updateFavoritesList();
+    });

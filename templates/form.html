@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact us!</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/css/styles.css">
+    <link rel="stylesheet" href="/static/css/formularz.css">
+    <link rel="stylesheet" href="../static/css/favourite.css">
+
+</head>
+<body>
+
+<header>
+    <div class="header-container">
+        <a href="/" id="home-link">
+            <img src="../static/img/spotify_logo.png" alt="Spotify Logo" id="spotify-logo">
+        </a>
+        <form id="search-form" method="POST" action="/">
+            <input type="text" id="artist-name" name="artist_name" placeholder="Search for an artist...">
+            <button type="submit">Search</button>
+        </form>
+        <button id="nav-toggler" aria-label="Toggle navigation">&#9776;</button>
+
+    </div>
+    <nav id="nav-menu">
+        <div class="favorites-dropdown">
+            <button id="favorites-toggler">Favorites</button>
+            <ul id="favorites-list" class="favorites-list"></ul>
+        </div>
+        <a href="/form.html">Contact</a>
+    </nav>
+</header>
+
+
+<div class="container">
+    <h2>CONTACT US!</h2>
+    <form action="mailto:beatap@cs.pollub.pl" method="post">
+        <div class="row">
+            <div class="col-25">
+                <label for="fname">First Name</label>
+            </div>
+            <div class="col-75">
+                <input id="fname" name="firstname" placeholder="Your name.." type="text" required>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-25">
+                <label for="lname">Last Name</label>
+            </div>
+            <div class="col-75">
+                <input id="lname" name="lastname" placeholder="Your last name.." type="text" required>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-25">
+                <label for="email">Email</label>
+            </div>
+            <div class="col-75">
+                <input id="email" name="email" type="email" required placeholder="Enter your email">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-25">
+                <label for="platform">Platform</label>
+            </div>
+            <div class="col-75">
+                <select id="platform" name="platform" required>
+                    <option value="">Select a platform</option>
+                    <option value="australia">Spotify</option>
+                    <option value="canada">Apple music</option>
+                    <option value="usa">Tidal</option>
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-25">
+                <label for="subject">Subject</label>
+            </div>
+            <div class="col-75">
+                <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px" required></textarea>
+            </div>
+        </div>
+        <div class="row">
+            <input type="submit" value="Submit">
+        </div>
+    </form>
+</div>
+
+<footer>
+    <p>&copy; 2021 Spotify Top Songs</p>
+</footer>
+
+<!-- jQuery, Popper.js, and Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="/static/js/script.js"></script>
+
+</body>
+</html>

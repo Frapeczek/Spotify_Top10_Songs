@@ -10,29 +10,52 @@ header {
     position: fixed;
     top: 0;
     width: 100%;
-    padding: 20px;
+    padding: 10px 20px;
     text-align: center;
-    background-color: rgba(0, 0, 0, 0); /* Transparent background */
-    transition: background-color 0.3s ease-in-out; /* Transition effect */
+    background-color: rgba(0, 0, 0, 0);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     z-index: 1000;
 }
 
-header.scrolled {
-
-    background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent background when scrolled */
+.header-container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
 }
 
+#home-link {
+    border-radius: 50%;
+    border: 1px solid white;
+    display: flex;
+    align-items: center;
+}
 
-header input[type="text"] {
+#spotify-logo {
+    width: 60px;
+    height: auto;
+}
+
+#search-form {
+    display: flex;
+    align-items: center;
+    margin-left: 20px;
+    flex-grow: 1;
+}
+
+#search-form input[type="text"] {
     padding: 10px;
     font-size: 16px;
     border: none;
-    width: 300px;
+    width: 100%;
+    max-width: 300px;
     margin-right: 10px;
     border-radius: 4px;
 }
 
-header button {
+#search-form button {
     padding: 10px;
     font-size: 16px;
     border: none;
@@ -42,13 +65,121 @@ header button {
     cursor: pointer;
 }
 
-header button:hover {
+#search-form button:hover {
     background-color: #555;
 }
 
-h1 {
-    text-align: center;
-    margin-top: 80px; /* Added margin to prevent overlap with fixed header */
+#nav-toggler {
+    display: none; /* Hide by default */
+    background: none;
+    border: none;
+    font-size: 36px;
+    cursor: pointer;
+    color: white;
+}
+
+#nav-menu {
+    padding-right: 8%;
+    display: flex;
+    align-items: center;
+}
+
+#nav-menu a {
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    margin-left: 20px;
+}
+
+header a {
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+}
+
+@media (max-width: 768px) {
+    #nav-toggler {
+        padding-right: 8%;
+        display: block; /* Show toggler button */
+    }
+
+    .carousel-caption h1 {
+        font-size: 1.8em;
+    }
+
+    .music_name {
+        font-size: 1.2em;
+    }
+
+    #nav-menu {
+        display: none; /* Hide menu by default */
+        flex-direction: column;
+        align-items: flex-start;
+        background-color: rgba(0, 0, 0, 0.2);
+        position: absolute;
+        top: 60px;
+        right: 0;
+        width: 100%;
+        padding: 20px;
+    }
+
+    #nav-menu.show {
+        display: flex;
+    }
+
+    header a {
+        margin-left: 0;
+        margin-top: 10px;
+    }
+
+    #search-form {
+        margin: 0;
+        justify-content: center;
+    }
+
+    #search-form input[type="text"] {
+        max-width: 200px;
+    }
+}
+
+@media (max-width: 480px) {
+    #search-form input[type="text"] {
+        max-width: 150px;
+    }
+
+    .carousel-caption h1 {
+        font-size: 1.5em;
+    }
+}
+
+.artist-banner {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 30px;
+    border-radius: 8px;
+    width: fit-content;
+    text-align: left;
+    margin-left: 30px;
+    margin-top: 100px;
+}
+
+.artist-photo {
+    width: 25%;
+    height: auto;
+    border-radius: 50%;
+    border: 2px solid white;
+    object-fit: cover;
+    margin-right: 20px;
+}
+
+.artist-name {
+    font-size: 2em;
+    font-weight: bold;
+    color: white;
+    text-transform: uppercase;
+    line-height: 1.5;
+    letter-spacing: 0.03em;
 }
 
 ul {
@@ -65,7 +196,24 @@ li {
     border-radius: 8px;
     display: flex;
     align-items: center;
+    justify-content: space-between;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+}
+
+.song-info {
+    display: flex;
+    align-items: center;
+    text-align: left;
+}
+
+.song-info > div {
+    margin-left: 10px;
+}
+
+.song-details {
+    display: flex;
+    flex-direction: column;
 }
 
 li img {
@@ -73,8 +221,27 @@ li img {
     border-radius: 8px;
 }
 
+li:hover img {
+    transform: scale(1.1);
+}
+
 li span {
     font-size: 1.2em;
+}
+
+li a.spotify-link {
+    display: flex;
+    align-items: center;
+}
+
+.spotify-link img {
+    width: 24px;
+    height: 24px;
+}
+
+li img.spotify-logo {
+    width: 30px;
+    height: 30px;
 }
 
 #loading {
@@ -84,11 +251,10 @@ li span {
     display: none;
 }
 
-/* Carousel styles */
 .carousel-item {
     position: relative;
     width: 100%;
-    height: 100vh; /* Full height */
+    height: 100vh;
     overflow: hidden;
 }
 
@@ -108,18 +274,30 @@ li span {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.5); /* Adjust the opacity to adjust the darkness */
+    background: rgba(0, 0, 0, 0.5);
     z-index: 1;
 }
 
 .carousel-caption {
     position: absolute;
     top: 50%;
-    transform: translateY(-50%);
+    left: 50%;
+    transform: translate(-50%, -50%);
     text-align: center;
     color: white;
-    z-index: 2; /* Ensure the text is above the overlay */
+    z-index: 2;
 }
+
+/* CHYBA USELESS */
+/*h1 {*/
+/*    text-align: center;*/
+/*     font-size: 2.5em;*/
+/*    font-weight: bold;*/
+/*    color: white;*/
+/*    text-transform: uppercase;*/
+/*    line-height: 1.5;*/
+/*    letter-spacing: 0.03em;*/
+/*}*/
 
 .carousel-caption h1 {
     font-size: 2.5em;
@@ -131,9 +309,101 @@ li span {
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
 }
 
-/* Dodajemy styl dla logo Spotify */
-#spotify-logo {
-    width: 60px; /* Ustawiamy szerokość na 40 pikseli */
-    float: left; /* Wyrównujemy do lewej strony */
-    margin-right: 20px; /* Dodajemy odstęp z prawej strony */
+.music_photo {
+    top: -50px;
+    left: -35px;
+    display: block;
+    z-index: 999;
+    cursor: pointer;
+    -webkit-transition-property: all;
+    transition-property: all;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+    border: 2px solid white;
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+}
+
+.music_name {
+    display: block;
+    font-size: 22px;
+    font-weight: bold;
+    margin-right: 20px;
+}
+
+/* Po najechaniu na tekst zmienia kolor na zielony */
+.music_name:hover {
+    color: #1DB954;
+}
+
+.popularity {
+    display: block;
+    font-size: 20px;
+    margin-top: 5px;
+}
+
+.popularity.high {
+    color: #1DB954;
+}
+
+.popularity.medium {
+    color: orange;
+}
+
+.popularity.low {
+    color: red;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #333;
+    color: white;
+    position: static;
+    bottom: 0;
+    width: 100%;
+}
+
+.custom-styles {
+    /* Ustawia odstęp między liniami na 0 */
+    line-height: 1;
+    margin: 0;
+    padding: 0;
+}
+
+.list-unstyled li {
+    list-style-type: none;
+}
+
+/* Center the content */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* QUOTES */
+
+blockquote {
+    font-size: 1.5em;
+    font-style: italic;
+    margin: 20px 0;
+    padding: 20px;
+    border-left: 5px solid #1DB954;
+    background-color: #333;
+    color: white;
+}
+
+.new-quote-btn {
+    background-color: #1DB954;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1.2em;
+    cursor: pointer;
+    margin-top: 20px;
+    border-radius: 10px;
+
+
 }
